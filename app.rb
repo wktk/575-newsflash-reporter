@@ -27,7 +27,7 @@ articles = urls.flat_map do |url|
   logger.debug(url)
   feed = RSS::Parser.parse(URI.open(url)) rescue next
   feed.items.select { |i| i.date > last }.map { |i| [i.title, i.link] }
-end
+end.compact
 
 # Do some cleansing
 articles.each do |article|
