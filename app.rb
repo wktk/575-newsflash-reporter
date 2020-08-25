@@ -19,7 +19,7 @@ urls = %w[
 ]
   #https://assets.wor.jp/rss/rdf/yomiuri/latestnews.rdf
 
-last = Time.now - 10 * 60 # 10 min
+last = Time.now - 30 * 60 # 30 min
 
 logger = Logger.new(STDERR)
 
