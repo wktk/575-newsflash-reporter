@@ -32,6 +32,8 @@ end.compact
 # Do some cleansing
 articles.each do |article|
   article[0].gsub!(/　\d+\/\d+ \d+:\d+更新$|^[^：:]{,10}[：:]|=[^=]{,10}$|^【[^】]+】|^[^）)]{,10}[）)]/, '')
+  article[0].gsub!(/(?:－| - ).{,20}$/, '') # Site name
+  article[0].gsub!(/[|｜].*$/, '')
   article[1].gsub!(/\?.*$/, '')
 end
 logger.info(articles)
