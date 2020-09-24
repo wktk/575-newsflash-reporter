@@ -37,8 +37,12 @@ end
 logger.info(articles)
 
 detected = articles.select do |article|
-  song = reviewer.find(article[0])
-  article.push(song.phrases.join) if song
+  song = reviewer.find(article[0])&.phrases&.join
+
+  next unless song
+  next if song.match?(/[０-９]/)
+
+  article.push(song)
 end
 logger.info(detected)
 
